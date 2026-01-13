@@ -37,6 +37,9 @@ export const HomeScreen = ({ onStartGame }) => {
             </div>
           </button>
         </div>
+        <footer className="home-footer">
+          Fait par Rayan Drissi
+        </footer>
       </div>
     </div>
   );

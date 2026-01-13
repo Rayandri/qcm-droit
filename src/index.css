@@ -84,6 +84,12 @@ body {
 .mode-btn.annales:hover .mode-btn-icons { color: var(--color-annales-accent); }
 .mode-btn.cours:hover .mode-btn-icons { color: var(--color-cours-accent); }
 
+.home-footer {
+  margin-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+}
+
 .result-screen { background: var(--color-bg); }
 .result-card {
   background: var(--color-card);
