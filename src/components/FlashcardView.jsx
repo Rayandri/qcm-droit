@@ -22,7 +22,11 @@ export const FlashcardView = ({ onNext }) => {
           <h3>Flashcard Révision</h3>
         </div>
         <h2 className="flashcard-title">{card.title}</h2>
-        <p className="flashcard-content">{card.content}</p>
+        <ul className="flashcard-list">
+          {card.content.map((item, idx) => (
+            <li key={idx}>{item}</li>
+          ))}
+        </ul>
       </div>
       <button onClick={onNext} className="flashcard-continue-btn">
         Continuer le Quiz <ChevronRight size={20} />

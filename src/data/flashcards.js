@@ -1,34 +1,75 @@
 export const FLASHCARDS = [
     {
         title: "La Période d'Essai",
-        content: "Elle permet d'évaluer les compétences. Elle n'est pas obligatoire. Sa rupture est libre (délai de prévenance à respecter) et ne nécessite pas de motivation, sauf abus."
+        content: [
+            "Permet d'évaluer les compétences",
+            "N'est PAS obligatoire",
+            "Rupture libre (délai de prévenance)",
+            "Pas de motivation requise (sauf abus)"
+        ]
     },
     {
         title: "Clause de Non-Concurrence",
-        content: "Pour être valide, elle doit être : 1. Limitée dans le temps. 2. Limitée dans l'espace. 3. Légitime (protéger l'entreprise). 4. Comporter une contrepartie financière."
+        content: [
+            "Limitée dans le temps",
+            "Limitée dans l'espace",
+            "Intérêt légitime (protéger l'entreprise)",
+            "Contrepartie financière obligatoire"
+        ]
     },
     {
         title: "Licenciement : Cause Réelle et Sérieuse",
-        content: "Tout licenciement (sauf économique) doit être motivé par une cause existante (réelle), exacte et suffisamment grave (sérieuse) pour justifier la rupture."
+        content: [
+            "Réelle → La cause doit exister",
+            "Exacte → Les faits sont vérifiables",
+            "Sérieuse → Suffisamment grave pour justifier la rupture"
+        ]
     },
     {
         title: "Rupture Conventionnelle",
-        content: "Seule façon de rompre un CDI d'un commun accord avec droit au chômage. Nécessite un entretien, une convention, un délai de rétractation (15j) et une homologation (15j)."
+        content: [
+            "Uniquement pour les CDI",
+            "Accord mutuel des deux parties",
+            "Délai de rétractation : 15 jours",
+            "Homologation DREETS : 15 jours",
+            "Ouvre droit au chômage"
+        ]
     },
     {
         title: "Harcèlement Moral",
-        content: "Nécessite des agissements RÉPÉTÉS ayant pour objet ou effet une dégradation des conditions de travail susceptible de porter atteinte aux droits/dignité ou santé du salarié."
+        content: [
+            "Agissements RÉPÉTÉS (critère clé)",
+            "Dégradation des conditions de travail",
+            "Atteinte aux droits / dignité / santé",
+            "Obligation de sécurité de l'employeur"
+        ]
     },
     {
         title: "Forfait Jours",
-        content: "Dispositif pour les cadres autonomes. On ne compte pas en heures (35h) mais en jours travaillés (max 218/an). Impose un suivi de la charge de travail et le respect des repos quotidiens."
+        content: [
+            "Pour les cadres autonomes",
+            "Maximum : 218 jours / an",
+            "Pas de décompte horaire (35h)",
+            "Repos quotidien : 11h minimum",
+            "Suivi de la charge de travail"
+        ]
     },
     {
         title: "Faute Grave",
-        content: "Faute rendant impossible le maintien du salarié dans l'entreprise, même pendant le préavis. Privative de l'indemnité de licenciement et de préavis."
+        content: [
+            "Rend impossible le maintien dans l'entreprise",
+            "Perte de l'indemnité de licenciement",
+            "Perte de l'indemnité de préavis",
+            "Conserve : congés payés + chômage"
+        ]
     },
     {
         title: "Convention Collective",
-        content: "Accord écrit conclu entre syndicats employeurs et salariés d'une branche (ex: Syntec). Elle adapte le Code du travail et est souvent plus favorable (primes, congés, maladie)."
+        content: [
+            "Accord entre syndicats (employeurs + salariés)",
+            "Propre à une branche (ex: Syntec)",
+            "Adapte le Code du travail",
+            "Souvent plus favorable (primes, congés...)"
+        ]
     }
 ];
