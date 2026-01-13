@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useQuiz } from './hooks';
+import { HomeScreen, ResultScreen, FlashcardView, QuizQuestion } from './components';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const {
+    mode,
+    gameQuestions,
+    currentQuestionIndex,
+    score,
+    selectedOption,
+    isAnswered,
+    showResult,
+    showFlashcard,
+    shuffledOptions,
+    currentQuestion,
+    startGame,
+    handleOptionClick,
+    handleNext,
+    handleFlashcardDone,
+    resetGame,
+  } = useQuiz();
+
+  if (!mode) {
+    return <HomeScreen onStartGame={startGame} />;
+  }
+
+  if (showResult) {
+    return (
+      <ResultScreen
+        score={score}
+        total={gameQuestions.length}
+        mode={mode}
+        onReset={resetGame}
+      />
+    );
+  }
+
+  if (showFlashcard) {
+    return (
+      <div className="screen flashcard-screen">
+        <FlashcardView onNext={handleFlashcardDone} />
+      </div>
+    );
+  }
+
+  if (!currentQuestion) {
+    return <div className="loading">Chargement...</div>;
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <QuizQuestion
+      currentQuestion={currentQuestion}
+      currentQuestionIndex={currentQuestionIndex}
+      total={gameQuestions.length}
+      shuffledOptions={shuffledOptions}
+      selectedOption={selectedOption}
+      isAnswered={isAnswered}
+      onOptionClick={handleOptionClick}
+      onNext={handleNext}
+      onReset={resetGame}
+    />
+  );
+};
 
-export default App
+export default App;
