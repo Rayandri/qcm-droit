@@ -1,6 +1,10 @@
-import { Scale, BookOpen, ShieldCheck, Shuffle } from 'lucide-react';
+import { useState } from 'react';
+import { Scale, BookOpen, ShieldCheck, Shuffle, Hash } from 'lucide-react';
 
 export const HomeScreen = ({ onStartGame }) => {
+  const [coursCount, setCoursCount] = useState(20);
+  const countOptions = [10, 20, 'all'];
+
   return (
     <div className="screen home-screen">
       <div className="home-content">
@@ -24,18 +28,43 @@ export const HomeScreen = ({ onStartGame }) => {
             </div>
           </button>
 
-          <button onClick={() => onStartGame('cours')} className="mode-btn cours">
-            <div className="mode-btn-content">
-              <div>
-                <h3>Mode Cours</h3>
-                <p>25 questions aléatoires sur les 5 modules.</p>
+          <div className="cours-mode-container">
+            <button onClick={() => onStartGame('cours', coursCount)} className="mode-btn cours">
+              <div className="mode-btn-content">
+                <div>
+                  <h3>Mode Cours</h3>
+                  <p>
+                    {coursCount === 'all' 
+                      ? 'Toutes les questions sur les 5 modules.'
+                      : `${coursCount} questions aléatoires sur les 5 modules.`}
+                  </p>
+                </div>
+                <div className="mode-btn-icons">
+                  <Shuffle size={20} />
+                  <BookOpen size={24} />
+                </div>
               </div>
-              <div className="mode-btn-icons">
-                <Shuffle size={20} />
-                <BookOpen size={24} />
+            </button>
+
+            <div className="count-selector">
+              <Hash size={16} />
+              <span>Nombre de questions:</span>
+              <div className="count-options">
+                {countOptions.map(opt => (
+                  <button
+                    key={opt}
+                    className={`count-btn ${coursCount === opt ? 'active' : ''}`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCoursCount(opt);
+                    }}
+                  >
+                    {opt === 'all' ? 'Tous' : opt}
+                  </button>
+                ))}
               </div>
             </div>
-          </button>
+          </div>
         </div>
         <footer className="home-footer">
           Fait par Rayan Drissi

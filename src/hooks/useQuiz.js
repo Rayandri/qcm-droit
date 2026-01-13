@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from 'react';
-import { QUESTIONS_ANNALES, QUESTIONS_COURS } from '../data';
+import { QUESTIONS_ANNALES, QUESTIONS_COURS, QUESTIONS_COURS_SUPPLEMENTAIRES } from '../data';
 import { shuffleArray } from '../utils/shuffle';
 
 export const useQuiz = () => {
@@ -13,10 +13,22 @@ export const useQuiz = () => {
     const [showFlashcard, setShowFlashcard] = useState(false);
     const [shuffledOptions, setShuffledOptions] = useState([]);
 
-    const startGame = useCallback((selectedMode) => {
+    const startGame = useCallback((selectedMode, questionCount = 'all') => {
         setMode(selectedMode);
-        const sourceQuestions = selectedMode === 'annales' ? QUESTIONS_ANNALES : QUESTIONS_COURS;
-        setGameQuestions(shuffleArray(sourceQuestions));
+
+        let sourceQuestions;
+        if (selectedMode === 'annales') {
+            sourceQuestions = QUESTIONS_ANNALES;
+        } else {
+            const allCoursQuestions = [...QUESTIONS_COURS, ...QUESTIONS_COURS_SUPPLEMENTAIRES];
+            sourceQuestions = shuffleArray(allCoursQuestions);
+
+            if (questionCount !== 'all') {
+                sourceQuestions = sourceQuestions.slice(0, questionCount);
+            }
+        }
+
+        setGameQuestions(selectedMode === 'annales' ? shuffleArray(sourceQuestions) : sourceQuestions);
         setCurrentQuestionIndex(0);
         setScore(0);
         setShowResult(false);
